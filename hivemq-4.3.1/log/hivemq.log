@@ -1,0 +1,28 @@
+2020-02-26 15:02:26,589 INFO  - Starting HiveMQ Enterprise Server
+2020-02-26 15:02:26,593 INFO  - HiveMQ version: 4.3.1
+2020-02-26 15:02:26,593 INFO  - HiveMQ home directory: C:\Users\Nico Diaz\Documents\Schule\4AHIF\1. Semester\NVS_LACK\MQTT\hivemq-4.3.1\hivemq-4.3.1
+2020-02-26 15:02:26,598 INFO  - Log Configuration was overridden by C:\Users\Nico Diaz\Documents\Schule\4AHIF\1. Semester\NVS_LACK\MQTT\hivemq-4.3.1\hivemq-4.3.1\conf\logback.xml
+2020-02-26 15:02:27,054 INFO  - This node's ID is RaPzo
+2020-02-26 15:02:27,054 INFO  - Clustering is disabled
+2020-02-26 15:02:32,244 INFO  - No valid license file found. Using trial license, restricted to 25 connections.
+2020-02-26 15:02:34,711 INFO  - This node uses '12' CPU cores.
+2020-02-26 15:02:34,721 INFO  - Starting HiveMQ extension system.
+2020-02-26 15:02:34,777 WARN  - 
+################################################################################################################
+# This HiveMQ deployment is not secure! You are lacking Authentication and Authorization.                      #
+# Right now any MQTT client can connect to the broker with a full set of permissions.                          #
+# For production usage, add an appropriate security extension and remove the hivemq-allow-all extension.       #
+# You can download security extensions from the HiveMQ Marketplace (https://www.hivemq.com/extensions/).       #
+################################################################################################################
+2020-02-26 15:02:34,781 INFO  - Extension "Allow All Extension" version 1.0.0 started successfully.
+2020-02-26 15:02:38,199 INFO  - RaPzo: no members discovered after 2001 ms: creating cluster as first member
+2020-02-26 15:02:38,263 INFO  - No user for HiveMQ Control Center configured. Starting with default user
+2020-02-26 15:02:38,265 INFO  - Starting HiveMQ Control Center on address 127.0.0.1 and port 8080
+2020-02-26 15:02:38,648 INFO  - Control Center Audit Logging started.
+2020-02-26 15:02:38,649 INFO  - Started HiveMQ Control Center in 384ms
+2020-02-26 15:02:38,672 INFO  - Starting TCP listener on address 0.0.0.0 and port 1883
+2020-02-26 15:02:39,717 INFO  - Started TCP Listener on address 0.0.0.0 and on port 1883
+2020-02-26 15:02:39,719 INFO  - Started HiveMQ in 13141ms
+2020-02-26 15:04:19,895 INFO  - Shutting down HiveMQ. Please wait, this could take a while...
+2020-02-26 15:04:21,965 INFO  - Shutting down extension system
+2020-02-26 15:04:21,975 INFO  - Extension "Allow All Extension" version 1.0.0 stopped successfully.

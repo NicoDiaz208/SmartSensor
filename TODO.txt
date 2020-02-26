@@ -1,0 +1,32 @@
+Broker:
+	Mosquitto.org		
+	HiveMQ.com		=> Kann mehr als Mosquitto/ bis zu 25 clients gratis
+	paho	=> inkl. musterbeispiele
+	Node-Red
+
+Datenbank zum mitloggen, broker, min. 2 Sensore, Oberfläche z.B. Handy
+
+1)	Installation von einem Message-Broker der MQTT spricht
+2)	Installation von Node-Red
+3)	Team?(3-5 Personen)
+4)	Aufgabenstellung (z.B. SmartHome, SmartGarden, SmartSchool, SelfDriving(Autonomes Fahren) usw.)
+
+Handy App
+	Angular
+	IONIC
+	PWA
+
+Desktop app
+	Angular
+	REACT
+	Vue.js
+
+Datenbanken
+MongoDB
+MariaDB
+
+Quarkus - Java
+Go
+NodeJS
+
+Node-Red
