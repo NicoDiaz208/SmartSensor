@@ -1,4 +1,0 @@
-2020-02-26 15:02:27,065 INFO  - Checking for migrations (HiveMQ version 4.3.1).
-2020-02-26 15:02:27,119 INFO  - Skipping migration because no persistence folder is present.
-2020-02-26 15:02:30,098 INFO  - Write metadata file: MetaInformation{hivemqVersion='4.3.1', clientSessionPersistenceVersion='040000', queuedMessagesPersistenceVersion='040000', subscriptionPersistenceVersion='040000', incomingMessageFlowPersistenceVersion='040200', retainedMessagesPersistenceVersion='040000_R', publishPayloadPersistenceVersion='040000_R', retainedMessagesPersistenceType='FILE_NATIVE', publishPayloadPersistenceType='FILE_NATIVE'}
-2020-02-26 15:02:30,127 INFO  - Finished migration.
