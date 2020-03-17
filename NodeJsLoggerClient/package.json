@@ -1,5 +1,5 @@
 {
-  "name": "nodejsclient",
+  "name": "nodejsloggerclient",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "mongodb": "^3.5.2",
     "mqtt": "^3.0.0",
     "tsc": "^1.20150623.0"
