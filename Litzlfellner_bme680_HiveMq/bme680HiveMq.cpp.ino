@@ -50,17 +50,14 @@ void setup() {
   mqttClient.setServer(server, 1883);
 
     if (mqttClient.connect("bme680")) {
-    // connection succeeded
+    // connected
   } else {
-    // connection failed
-    // mqttClient.state() will provide more information
-    // on why it failed.
     mqttClient.state()
   }
 }
 
 void loop() {
- // mqttClient.loop();
+ // mqttClient.loop(); kommt spaeter wieder hinzu
   if (! bme.performReading()) {
     Serial.println("Fehler beim Lesen überprüfe den Sensor!!!");
     return;
