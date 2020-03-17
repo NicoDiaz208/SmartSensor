@@ -6,14 +6,14 @@
 //HiveMQ
 #include <Ethernet.h>
 #include <PubSubClient.h>
- 
+//convert (c++)
+#include <string>
+
 //Steckplaetze
 #define BME_SCK 13
 #define BME_MISO 12
 #define BME_MOSI 11
 #define BME_CS 10
-//convert (c++)
-#include <string>
 
 //bme680
 Adafruit_BME680 bme; // I2C Schnittstelle
