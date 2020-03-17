@@ -22,7 +22,7 @@ Adafruit_BME680 bme; // I2C Schnittstelle
 
 byte mac[]    = {  0xDE, 0xED, 0xBA, 0xFE, 0xFE, 0xED };
 IPAddress ip(172, 16, 0, 100);
-const char* server = "broker.example.com";
+const char* server = "broker.example.com"; //!!! Spaeter richtige Ip einfuegen
 
 EthernetClient ethClient;
 PubSubClient mqttClient(ethClient);
