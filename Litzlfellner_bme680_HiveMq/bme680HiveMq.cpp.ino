@@ -89,7 +89,7 @@ void loop() {
   Serial.print("Gas = ");
   Serial.print(bme.gas_resistance / 1000.0);
   Serial.println(" KOhms");
-  rc = mqttClient.publish("smartHome/gasatur", to_string((bme.gas_resistance/1000.0)));
+  rc = mqttClient.publish("smartHome/gas", to_string((bme.gas_resistance/1000.0)));
   if(rc == false)
   {
     error();
