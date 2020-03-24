@@ -59,13 +59,13 @@ void setup() {
 void loop() {
  // mqttClient.loop(); kommt spaeter wieder hinzu
   if (! bme.performReading()) {
-    Serial.println("Fehler beim Lesen überprüfe den Sensor!!!");
+    Serial.println("Fehler beim Lesen ueberpruefe den Sensor!!!");
     return;
   }
   Serial.print("Temperatur = ");
   Serial.print(bme.temperature);
   Serial.println(" *C");
-  boolean rc = mqttClient.publish("smartHome/kitchen/temperatur", to_string(bme.temperature) );
+  boolean rc = mqttClient.publish("Htl-Leonding2020NVS/SmartHome/Kitchen/Temperatur", to_string(bme.temperature) );
   if(rc == false)
   {
     error();
@@ -73,7 +73,7 @@ void loop() {
   Serial.print("Luftdruck = ");
   Serial.print(bme.pressure / 100.0);
   Serial.println(" hPa");
-  rc = mqttClient.publish("smartHome/livingRoom/pressure", to_string((bme.pressure/100)));
+  rc = mqttClient.publish("Htl-Leonding2020NVS/SmartHome/Livingroom/AirPressure", to_string((bme.pressure/100)));
   if(rc == false)
   {
     error();
@@ -81,7 +81,7 @@ void loop() {
   Serial.print("Luftfeuchtigkeit = ");
   Serial.print(bme.humidity);
   Serial.println(" %");
-  rc = mqttClient.publish("smartHome/cellar/humidity", to_string(bme.humidity) );
+  rc = mqttClient.publish("Htl-Leonding2020NVS/SmartHome/Cellar/Humidity", to_string(bme.humidity) );
   if(rc == false)
   {
     error();
@@ -89,7 +89,7 @@ void loop() {
   Serial.print("Gas = ");
   Serial.print(bme.gas_resistance / 1000.0);
   Serial.println(" KOhms");
-  rc = mqttClient.publish("smartHome/garage/gas", to_string((bme.gas_resistance/1000.0)));
+  rc = mqttClient.publish("Htl-Leonding2020NVS/SmartHome/Garage/gas", to_string((bme.gas_resistance/1000.0)));
   if(rc == false)
   {
     error();
