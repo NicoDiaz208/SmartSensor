@@ -7,25 +7,6 @@ const options = {
 const client = mqtt.connect(options);
 
 
-
-
-
-
-// Mongo DB
-const MongoClient = require('mongodb').MongoClient;
-// For Docker Toolbox
-// const url = "mongodb://192.168.99.100:27017";
-
-// For Docker Desktop
-const url = "mongodb://localhost:27017";
-const dbName = "sensor"
-var db;
-var data;
-
-
-
-
-
 client.subscribe('#');
 
 // sends data.
@@ -49,6 +30,24 @@ client.on('connect', function(){
 })
 
 
+
+
+
+
+
+
+// Mongo DB
+const MongoClient = require('mongodb').MongoClient;
+// For Docker Toolbox
+// const url = "mongodb://192.168.99.100:27017";
+
+// For Docker Desktop
+const url = "mongodb://localhost:27017";
+const dbName = "sensor"
+var db;
+var data;
+
+
 MongoClient.connect(url, function(err, client) {
   if (err) throw err;
   console.log("Database Connection established!");
@@ -56,11 +55,36 @@ MongoClient.connect(url, function(err, client) {
   db = client.db(dbName);
   
   data = db.collection('data');
-  //GetAll
-  data.find({}).toArray((err, result) => {
-  if (err) throw err;
-
-  console.log(result);
-  });  
 })
+
+
+
+
+
+
+// Rest
+
+var express = require('express'),
+app = express(),
+port = 3000;
+
+
+app.get('/getAll', function (req, res) {
+	data.find({}).toArray((err, result) => {
+		if (err) throw err;
+		res.send(result);
+		console.log('Send all Data');
+  }); 
+});
+app.get('/getTopic/:topic', function (req, res) {
+	var query = { Topic: 'SmartHome/'+req.params.topic };
+	data.find(query).toArray((err, result) => {
+		if (err) throw err;
+		res.send(result);
+		console.log('Send data from Topic: '+req.params.topic);
+  }); 
+});
+
+app.listen(port);
+console.log('todo list RESTful API server started on: ' + port);
   
