@@ -5,7 +5,7 @@ input.setEncoding('utf-8');
 
 var options = {
     port: 1883,
-    host: 'localhost'
+    host: 'broker.mqttdashboard.com'
 }
 
 var client = mqtt.connect(options);
@@ -21,5 +21,5 @@ client.on('connect', function(){
 
 input.on('data', function(data){
     var str = data.toString();
-    client.publish('NodeJsClient',str.slice(0,-2))
+    client.publish('Htl-Leonding2020NVS/SmartHome/Livingroom/Light',str.slice(0,-2))
 })
