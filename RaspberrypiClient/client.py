@@ -2,6 +2,7 @@
 import paho.mqtt.client as paho
 import time
 import os
+import light as _light
 
 def on_connect(client, userdata, flags, rc):
 	os.system("clear")
@@ -17,6 +18,7 @@ def on_message(client, userdata, msg):
 	print(msg.topic+": "+str(msg.payload))
 	if msg.payload == "Turn light on":
 		print("RaspberryPi: Turned light on!")
+		_light.light_on()
 	elif msg.payload == "Turn light off":
 		print("RaspberryPi: Turned light off!")
 
@@ -25,8 +27,8 @@ client.on_connect = on_connect
 client.on_publish = on_publish
 client.on_subscribe = on_subscribe
 client.on_message = on_message
-client.connect("169.254.219.0",1883)
-client.subscribe("#",qos=1)
+client.connect("broker.mqttdashboard.com",1883)
+client.subscribe("Htl-Leonding2020NVS/SmartHome/Livingroom/Light",qos=1)
 client.loop_start()
 
 while True:
