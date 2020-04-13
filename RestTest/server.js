@@ -1,6 +1,11 @@
 var express = require('express'),
 app = express(),
 port = 3000;
+const cors = require('cors')
+const bodyParser = require('body-parser')
+app.use(cors())
+app.use(bodyParser.text())
+
 
 var data = [
 {
@@ -25,8 +30,8 @@ var data = [
 app.get('/getAll', function (req, res) {
   res.send(data);
 });
-app.get('/getTopic/:topic', function (req, res) {
-  res.send(data.filter(d => d.topic === 'SmartHome/'+req.params.topic));
+app.get('/getTopic', function (req, res) {
+  res.send(data.filter(d => d.topic === req.body.replace(/"/g,"")));
 });
 
 app.listen(port);

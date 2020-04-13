@@ -10,11 +10,12 @@ const dbName = "sensor"
 var db;
 var data;
 const express = require('express'),
-server = express(),
+app = express(),
 port = 3000;
-
-
-
+const cors = require('cors')
+const bodyParser = require('body-parser')
+app.use(cors())
+app.use(bodyParser.text())
 
 
 // Subscribes to all Topics
@@ -50,13 +51,13 @@ MongoClient.connect(url, function(err, client) {
 
 
 
-// Sets the port the server will listen to (3000)
-server.listen(port);
-console.log('Server listening on port: '+port);
+// Sets the port the app will listen to (3000)
+app.listen(port);
+console.log('app listening on port: '+port);
 
 
 // Gets all the data in the database
-server.get('/getAll', function (req, res) {
+app.get('/getAll', function (req, res) {
 	data.find({}).toArray((err, result) => {
 		if (err) throw err;
 		res.send(result);
@@ -65,11 +66,13 @@ server.get('/getAll', function (req, res) {
 });
 
 // Gets all the data in the database from the requested topic
-server.get('/getTopic/:topic', function (req, res) {
-	var query = { Topic: 'SmartHome/'+req.params.topic };
+app.get('/getTopic/', function (req, res) {
+	var body = req.body.toString();
+	body = body.replace(/"/g,"")
+	var query = {"Topic": body};
 	data.find(query).toArray((err, result) => {
 		res.send(result);
 		if (err) throw err;
-		console.log('Send data from Topic: '+req.params.topic);
+		console.log('Send data from Topic: '+body);
   }); 
 });  
