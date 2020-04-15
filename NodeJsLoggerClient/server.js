@@ -1,7 +1,7 @@
 const mqtt = require('mqtt');
 const options = {
     port: 1883,
-    host: '172.17.217.90'
+    host: 'broker.mqttdashboard.com'
 }
 const client = mqtt.connect(options);
 const MongoClient = require('mongodb').MongoClient;
@@ -13,16 +13,15 @@ const express = require('express'),
 app = express(),
 port = 3000;
 const cors = require('cors')
-const bodyParser = require('body-parser')
 app.use(cors())
-app.use(bodyParser.text())
 
 
 // Subscribes to all Topics
-client.subscribe('#');
+client.subscribe('Htl-Leonding2020NVS/#');
 
 // If the client receives data it will be inserted into the mongodb
 client.on('message', function(topic, message, packet) {
+	console.log(message.toString());
 	data.insert({
 		Timestamp: Date.now(),
 		Topic: topic,
@@ -67,12 +66,10 @@ app.get('/getAll', function (req, res) {
 
 // Gets all the data in the database from the requested topic
 app.get('/getTopic/', function (req, res) {
-	var body = req.body.toString();
-	body = body.replace(/"/g,"")
-	var query = {"Topic": body};
+	var query = {"Topic": req.query.topic.replace(/"/g,"")};
 	data.find(query).toArray((err, result) => {
 		res.send(result);
 		if (err) throw err;
-		console.log('Send data from Topic: '+body);
+		console.log('Send data from Topic: '+req.query.topic.replace(/"/g,""));
   }); 
 });  
