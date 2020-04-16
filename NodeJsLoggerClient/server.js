@@ -11,7 +11,7 @@ var db;
 var data;
 const express = require('express'),
 app = express(),
-port = 3000;
+port = 9020;
 const cors = require('cors')
 app.use(cors())
 
@@ -21,8 +21,9 @@ client.subscribe('Htl-Leonding2020NVS/#');
 
 // If the client receives data it will be inserted into the mongodb
 client.on('message', function(topic, message, packet) {
-	console.log(message.toString());
-	data.insert({
+	console.log("Topic: " + topic.toString());
+	console.log("Message: " + message.toString());
+	data.insertOne({
 		Timestamp: Date.now(),
 		Topic: topic,
 		Message: message.toString()
@@ -66,10 +67,12 @@ app.get('/getAll', function (req, res) {
 
 // Gets all the data in the database from the requested topic
 app.get('/getTopic/', function (req, res) {
-	var query = {"Topic": req.query.topic.replace(/"/g,"")};
+	var topic = req.query.topic.replace(/"/g,"");
+	var query = {"Topic": {$regex: topic}};
+	console.log(query)
 	data.find(query).toArray((err, result) => {
 		res.send(result);
 		if (err) throw err;
-		console.log('Send data from Topic: '+req.query.topic.replace(/"/g,""));
+		console.log('Send data from Topic: '+ topic);
   }); 
 });  
