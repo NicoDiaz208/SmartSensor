@@ -4,13 +4,8 @@ const options = {
     host: 'broker.mqttdashboard.com'
 }
 const client = mqtt.connect(options);
-const express = require('express'),
-app = express(),
-port = 9020;
-const cors = require('cors')
-app.use(cors())
-database = require('./database.js')
-
+dataService = require('./dataService.js');
+restService = require('./restService.js');
 
 // Subscribes to all Topics
 client.subscribe('Htl-Leonding2020NVS/#');
@@ -19,21 +14,5 @@ client.subscribe('Htl-Leonding2020NVS/#');
 client.on('message', function(topic, message, packet) {
 	console.log("Topic: " + topic.toString());
 	console.log("Message: " + message.toString());
-	database.sendData(topic,message);
+	dataService.sendDataToDb(topic,message);
 });
-
-
-// Sets the port the app will listen to (3000)
-app.listen(port);
-console.log('app listening on port: '+port);
-
-
-// Gets all the data in the database
-app.get('/getAll', function (req, res) {
-	database.sendDataToRest(req,res);
-});
-
-// Gets all the data in the database from the requested topic
-app.get('/getTopic/', function (req, res) {
-	database.sendDataToRest(req,res);	
-});  

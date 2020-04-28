@@ -31,7 +31,7 @@ app.get('/getAll', function (req, res) {
   res.send(data);
 });
 app.get('/getTopic', function (req, res) {
-  res.send(data.filter(d => d.topic === req.body.replace(/"/g,"")));
+  res.send(data.filter(d => d.topic === req.query.topic.replace(/"/g,"")));
 });
 
 app.listen(port);

@@ -37,18 +37,7 @@ exports.sendDataToRest = function(req,res) {
 	return data;
 }
 
-/*exports.getData = function(req) {
-var topic = req.query.topic.replace(/"/g,"");
-	var query = {"Topic": {$regex: topic}};
-	returndata.find(query).toArray((err, result) => {
-		res.send(result);
-		if (err) throw err;
-		console.log('Send data from Topic: '+ topic);
-	}); 
-}*/
-
-
-exports.sendData = function(topic, message){
+exports.sendDataToDb = function(topic, message){
 	data.insertOne({
 		Timestamp: Date.now(),
 		Topic: topic,
