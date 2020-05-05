@@ -18,11 +18,17 @@ MongoClient.connect(url, function(err, client) {
 
 
 exports.sendDataToRest = function(req,res) {
+	var last = req.query.last;
 	if(req.query.topic){
 		var topic = req.query.topic.replace(/"/g,"");
+		var last = req.query.last;
 		var query = {"Topic": {$regex: topic}};
-		data.find(query).toArray((err, result) => {
-			res.send(result);
+		console.log('a');
+		data.find(query).sort(compare).toArray((err, result) => {
+			if(last != undefined)
+				res.send(result.slice(0,+last));
+			else
+				res.send(result);
 			if (err) throw err;
 			console.log('Send data from Topic: '+ topic);
 		}); 
@@ -30,13 +36,24 @@ exports.sendDataToRest = function(req,res) {
 	else{
 		data.find({}).toArray((err, result) => {
 			if (err) throw err;
-			res.send(result);
+			if(last != undefined)
+				res.send(result.slice(0,+last));
+			else
+				res.send(result);
 			console.log('Send all Data');
 		}); 
 	}
 	return data;
 }
-
+function compare( a, b ) {
+  if ( a.Timestamp > b.Timestamp ){
+    return -1;
+  }
+  if ( a.Timestamp < b.Timestamp ){
+    return 1;
+  }
+  return 0;
+}
 exports.sendDataToDb = function(topic, message){
 	data.insertOne({
 		Timestamp: Date.now(),
