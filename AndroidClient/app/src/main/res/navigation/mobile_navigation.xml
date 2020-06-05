@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_live_kitchen">
+
+    <!--<fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.androidclient.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_live_kitchen">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+            app:destination="@id/nav_home_second" />
+    </fragment> -->
+    <fragment
+        android:id="@+id/nav_live_kitchen"
+        android:name="com.example.androidclient.ui.liveKitchen.LiveKitchenFragment"
+        android:label="@string/live_kitchen"
+        tools:layout="@layout/fragment_live_kitchen">
+    </fragment>
+    <fragment
+        android:id="@+id/nav_live_garage"
+        android:name="com.example.androidclient.ui.liveGarage.LiveGarageFragment"
+        android:label="@string/live_garage"
+        tools:layout="@layout/fragment_live_garage"/>
+
+    <fragment
+        android:id="@+id/nav_live_livingroom"
+        android:name="com.example.androidclient.ui.liveLivingroom.LiveLivingroomFragment"
+        android:label="@string/live_livingroom"
+        tools:layout="@layout/fragment_live_livingroom" />
+    <fragment
+        android:id="@+id/nav_live_cellar"
+        android:name="com.example.androidclient.ui.liveCellar.LiveCellarFragment"
+        android:label="@string/live_cellar"
+        tools:layout="@layout/fragment_live_cellar" />
+    <fragment
+        android:id="@+id/nav_charts_livingroom"
+        android:name="com.example.androidclient.ui.liveLivingroom.ChartsLivingroomFragment"
+        android:label="@string/charts_livingroom"
+        tools:layout="@layout/fragment_charts_livingroom" />
+</navigation>

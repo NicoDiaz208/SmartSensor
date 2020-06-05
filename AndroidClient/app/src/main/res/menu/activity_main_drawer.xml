@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+        <group android:checkableBehavior="single">
+            <item android:title="Real-Time Data">
+                <menu>
+                    <group android:checkableBehavior="single">
+                        <item
+                            android:id="@+id/nav_live_kitchen"
+                            android:title="@string/kitchen" />
+                        <item
+                            android:id="@+id/nav_live_garage"
+                            android:title="@string/garage" />
+                        <item
+                            android:id="@+id/nav_live_livingroom"
+                            android:title="@string/livingroom" />
+                        <item
+                            android:id="@+id/nav_live_cellar"
+                            android:title="@string/cellar" />
+                    </group>
+                </menu>
+            </item>
+            <item android:title="Charts">
+                <menu>
+                    <group android:checkableBehavior="single">
+                        <!--<item
+                            android:id="@+id/nav_live_kitchen"
+                            android:title="@string/kitchen" />
+                        <item
+                            android:id="@+id/nav_live_garage"
+                            android:title="@string/garage" />-->
+                        <item
+                            android:id="@+id/nav_charts_livingroom"
+                            android:title="@string/livingroom" />
+                        <!--<item
+                            android:id="@+id/nav_live_cellar"
+                            android:title="@string/cellar" />-->
+                    </group>
+                </menu>
+            </item>
+        </group>
+</menu>
