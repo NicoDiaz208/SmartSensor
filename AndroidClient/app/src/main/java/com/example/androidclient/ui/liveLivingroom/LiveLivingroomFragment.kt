@@ -12,7 +12,8 @@ import com.example.androidclient.R
 
 class LiveLivingroomFragment : Fragment() {
 
-    private lateinit var liveLivingroomViewModel: ChartsLivingroomViewModel
+    private lateinit var liveLivingroomViewModel: LiveLivingroomViewModel
+
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -20,11 +21,23 @@ class LiveLivingroomFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         liveLivingroomViewModel =
-                ViewModelProviders.of(this).get(ChartsLivingroomViewModel::class.java)
+                ViewModelProviders.of(this).get(LiveLivingroomViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_live_livingroom, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        liveLivingroomViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        val temperatureText: TextView = root.findViewById(R.id.text_temperature)
+        liveLivingroomViewModel.temperatureText.observe(viewLifecycleOwner, Observer {
+            temperatureText.text = it
+        })
+        val humidityText: TextView = root.findViewById(R.id.text_humidity)
+        liveLivingroomViewModel.humidityText.observe(viewLifecycleOwner, Observer {
+            humidityText.text = it
+        })
+        val airPressureText: TextView = root.findViewById(R.id.text_airpressure)
+        liveLivingroomViewModel.airPressureText.observe(viewLifecycleOwner, Observer {
+            airPressureText.text = it
+        })
+        val gasText: TextView = root.findViewById(R.id.text_gas)
+        liveLivingroomViewModel.gasText.observe(viewLifecycleOwner, Observer {
+            gasText.text = it
         })
         return root
     }

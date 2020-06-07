@@ -11,7 +11,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 object SmartHomeApi {
     val retrofitService: SmartHomeApiService
         by lazy{ retrofit.create(SmartHomeApiService::class.java)}
-    private val BASE_URL = "http://90.146.160.166:9020"
+    // private val BASE_URL = "http://90.146.160.166:9020"
+    private val BASE_URL = "http://192.168.41.177:9020/"
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())

@@ -1,6 +1,7 @@
 package com.example.androidclient.ui.service
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import at.htl.countries.model.Data
 import at.htl.countries.service.SmartHomeApi
@@ -32,7 +33,7 @@ object Repo {
         data.await() as List<Data>
     }
 
-    fun getDataByTopic(topic: String, amount: String = "100") {
+    fun getDataByTopic(topic: String, amount: String = "100", data: MutableLiveData<String>) {
         GlobalScope.launch {
             Log.d(LiveGarageViewModel.LOG_TAG, "Load...")
             val deferredObject =
@@ -43,10 +44,11 @@ object Repo {
                 for (x in listResult) {
                     Log.d(LiveGarageViewModel.LOG_TAG, x.message)
                 }
-                Log.d(LiveGarageViewModel.LOG_TAG, kitchenTemperature[0].message)
+                data.postValue(kitchenTemperature[0].message)
             } catch (ex: Exception) {
                 Log.e(LiveGarageViewModel.LOG_TAG, "load from api exception ${ex.message}")
             }
         }
     }
+
 }

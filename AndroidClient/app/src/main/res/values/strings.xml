@@ -24,5 +24,6 @@
     <string name="humidity">Humidity:</string>
     <string name="airpressure">Airpressure:</string>
     <string name="charts_livingroom">Charts Livingroom</string>
+    <string name="gas">Gas:</string>
 
 </resources>
