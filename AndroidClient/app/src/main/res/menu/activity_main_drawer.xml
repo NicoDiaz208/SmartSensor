@@ -24,18 +24,18 @@
             <item android:title="Charts">
                 <menu>
                     <group android:checkableBehavior="single">
-                        <!--<item
-                            android:id="@+id/nav_live_kitchen"
+                        <item
+                            android:id="@+id/nav_charts_kitchen"
                             android:title="@string/kitchen" />
                         <item
-                            android:id="@+id/nav_live_garage"
-                            android:title="@string/garage" />-->
+                            android:id="@+id/nav_charts_garage"
+                            android:title="@string/garage" />
                         <item
                             android:id="@+id/nav_charts_livingroom"
                             android:title="@string/livingroom" />
-                        <!--<item
-                            android:id="@+id/nav_live_cellar"
-                            android:title="@string/cellar" />-->
+                        <item
+                            android:id="@+id/nav_charts_cellar"
+                            android:title="@string/cellar" />
                     </group>
                 </menu>
             </item>

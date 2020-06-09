@@ -1,4 +1,4 @@
-package com.example.androidclient.ui.chartsLivingroom
+package com.example.androidclient.ui.chartsKitchen
 
 import android.graphics.Color
 import android.os.Bundle
@@ -26,12 +26,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ChartsLivingroomFragment : Fragment() {
+class ChartsKitchenFragment : Fragment() {
 
-    private lateinit var chartsLivingroomViewModel: ChartsLivingroomViewModel
+    private lateinit var chartsKitchenViewModel: ChartsKitchenViewModel
+
     private lateinit var lineChart: LineChart
 
-    private val sdf = SimpleDateFormat("dd/MM")
+    private val sdf = SimpleDateFormat("dd/mm")
     private var maxY = 0f
     private var minY = 100f
     override fun onCreateView(
@@ -39,11 +40,11 @@ class ChartsLivingroomFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        chartsLivingroomViewModel =
-            ViewModelProviders.of(this).get(ChartsLivingroomViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_charts_livingroom, container, false)
+        chartsKitchenViewModel =
+            ViewModelProviders.of(this).get(ChartsKitchenViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_charts_kitchen, container, false)
         /* val textView: TextView = root.findViewById(R.id.text_slideshow)
-        chartsLivingroomViewModel.text.observe(viewLifecycleOwner, Observer {
+        chartsKitchenViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })*/
         lineChart = root.findViewById(R.id.linechart)
@@ -77,7 +78,7 @@ class ChartsLivingroomFragment : Fragment() {
             yValueTemperature.add(Entry(9f, 40f))*/
             var deferredObject =
                 SmartHomeApi.retrofitService.getByTopic(
-                    "Htl-Leonding2020NVS/SmartHome/Livingroom/Temperatur",
+                    "Htl-Leonding2020NVS/SmartHome/Kitchen/Temperatur",
                     Repo.amount
                 )
             try {
@@ -124,7 +125,7 @@ class ChartsLivingroomFragment : Fragment() {
             y1ValueHumidity.add(Entry(9f, 40f))*/
             deferredObject =
                 SmartHomeApi.retrofitService.getByTopic(
-                    "Htl-Leonding2020NVS/SmartHome/Livingroom/Humidity",
+                    "Htl-Leonding2020NVS/SmartHome/Kitchen/Humidity",
                     Repo.amount
                 )
             try {
@@ -172,7 +173,7 @@ class ChartsLivingroomFragment : Fragment() {
             yValueGas.add(Entry(9f, 140f))*/
             deferredObject =
                 SmartHomeApi.retrofitService.getByTopic(
-                    "Htl-Leonding2020NVS/SmartHome/Livingroom/Gas",
+                    "Htl-Leonding2020NVS/SmartHome/Kitchen/Gas",
                     Repo.amount
                 )
             try {
@@ -219,12 +220,10 @@ class ChartsLivingroomFragment : Fragment() {
         yValueAirpressure.add(Entry(7f,2f))
         yValueAirpressure.add(Entry(8f,1f))
         yValueAirpressure.add(Entry(9f,0f))*/
-            //val values = arrayListOf<String>()
-            val values = arrayListOf<String>()
-            var lastValueY = ""
+            // val values = arrayListOf<String>()
             deferredObject =
                 SmartHomeApi.retrofitService.getByTopic(
-                    "Htl-Leonding2020NVS/SmartHome/Livingroom/AirPressure",
+                    "Htl-Leonding2020NVS/SmartHome/Kitchen/AirPressure",
                     Repo.amount
                 )
             try {
@@ -234,19 +233,12 @@ class ChartsLivingroomFragment : Fragment() {
                 for (x in listResult) {
                     Log.d(LiveGarageViewModel.LOG_TAG, x.message)
                     val date = Date(x.timestamp.toLong())
-                    Log.i("day:", "" + date.day)
-                    Log.i("timestamp:", "" + x.timestamp)
-                    Log.i("date:", "" + date)
+                    Log.i("date:", "" + date.day)
+                    Log.i("date:", "" + x.timestamp)
                     Log.i("format", sdf.format(date))
                     Log.i("Seconds", "" + date.seconds)
-                    if(lastValueY == sdf.format(date)){
-                        values.add("${date.hours}:${date.minutes}:${date.seconds}")
-                    }
-                    else{
-                        lastValueY = sdf.format(date)
-                        values.add(""+sdf.format(date))
-                    }
                     yValueAirpressure.add(Entry(count.toFloat(), x.message.toFloat()))
+                    // values.add(""+count)
                     count++;
                     if(x.message.toFloat() > maxY){
                         maxY = x.message.toFloat() + 40
@@ -274,10 +266,11 @@ class ChartsLivingroomFragment : Fragment() {
 
             lineChart.data = data;
 
-            Log.i("test","t");
+            val values = arrayOf<String>("Mon", "Tue", "Wen", "Thu", "Fri", "Sat", "Sun")
+
             val xAxis = lineChart.xAxis
             val formatter = AxisValueFormatter()
-            formatter.values = values.toTypedArray()
+            formatter.values = values // .toArray() as Array<String>
             xAxis.valueFormatter = formatter
             leftAxis.axisMaximum = maxY
             leftAxis.axisMinimum = minY

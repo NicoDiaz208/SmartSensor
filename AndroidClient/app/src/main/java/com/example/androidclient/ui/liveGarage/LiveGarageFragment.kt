@@ -12,7 +12,7 @@ import com.example.androidclient.R
 
 class LiveGarageFragment : Fragment() {
 
-    private lateinit var galleryViewModel: LiveGarageViewModel
+    private lateinit var liveGarageViewModel: LiveGarageViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -20,14 +20,25 @@ class LiveGarageFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
 
-        galleryViewModel =
+        liveGarageViewModel =
                 ViewModelProviders.of(this).get(LiveGarageViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_live_garage, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        val temperatureText: TextView = root.findViewById(R.id.text_temperature)
+        liveGarageViewModel.temperatureText.observe(viewLifecycleOwner, Observer {
+            temperatureText.text = it
         })
-
+        val humidityText: TextView = root.findViewById(R.id.text_humidity)
+        liveGarageViewModel.humidityText.observe(viewLifecycleOwner, Observer {
+            humidityText.text = it
+        })
+        val airPressureText: TextView = root.findViewById(R.id.text_airpressure)
+        liveGarageViewModel.airPressureText.observe(viewLifecycleOwner, Observer {
+            airPressureText.text = it
+        })
+        val gasText: TextView = root.findViewById(R.id.text_gas)
+        liveGarageViewModel.gasText.observe(viewLifecycleOwner, Observer {
+            gasText.text = it
+        })
         return root
     }
 }

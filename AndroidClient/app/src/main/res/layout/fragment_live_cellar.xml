@@ -4,20 +4,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.liveLivingroom.ChartsLivingroomFragment">
+    tools:context=".ui.chartsCellar.ChartsCellarFragment">
 
     <TextView
-        android:id="@+id/text_live_cellar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/editText4"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:text="@string/gas"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.483"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/text_temperature"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:gravity="center_horizontal"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <TextView
+        android:id="@+id/text_humidity"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.613"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.336" />
+
+    <TextView
+        android:id="@+id/text_airpressure"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.411" />
+
+    <TextView
+        android:id="@+id/text_gas"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.613"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.483" />
+
+    <TextView
+        android:id="@+id/editText3"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:text="@string/airpressure"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal" />
+        app:layout_constraintVertical_bias="0.411"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/editText2"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:text="@string/humidity"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.336"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/editText"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:text="@string/temperature"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="403dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

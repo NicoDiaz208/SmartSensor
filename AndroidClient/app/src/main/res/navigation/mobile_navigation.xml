@@ -39,7 +39,22 @@
         tools:layout="@layout/fragment_live_cellar" />
     <fragment
         android:id="@+id/nav_charts_livingroom"
-        android:name="com.example.androidclient.ui.liveLivingroom.ChartsLivingroomFragment"
+        android:name="com.example.androidclient.ui.chartsLivingroom.ChartsLivingroomFragment"
         android:label="@string/charts_livingroom"
         tools:layout="@layout/fragment_charts_livingroom" />
+    <fragment
+        android:id="@+id/nav_charts_cellar"
+        android:name="com.example.androidclient.ui.chartsCellar.ChartsCellarFragment"
+        android:label="charts_cellar"
+        tools:layout="@layout/fragment_charts_cellar" />
+    <fragment
+        android:id="@+id/nav_charts_garage"
+        android:name="com.example.androidclient.ui.chartsGarage.ChartsGarageFragment"
+        android:label="@string/charts_garage"
+        tools:layout="@layout/fragment_charts_garage" />
+    <fragment
+        android:id="@+id/nav_charts_kitchen"
+        android:name="com.example.androidclient.ui.chartsKitchen.ChartsKitchenFragment"
+        android:label="@string/charts_kitchen"
+        tools:layout="@layout/fragment_charts_kitchen" />
 </navigation>

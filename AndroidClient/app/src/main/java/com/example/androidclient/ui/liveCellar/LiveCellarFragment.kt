@@ -23,9 +23,21 @@ class LiveCellarFragment : Fragment() {
         liveCellarViewModel =
                 ViewModelProviders.of(this).get(LiveCellarViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_live_cellar, container, false)
-        val textView: TextView = root.findViewById(R.id.text_live_cellar)
-        liveCellarViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        val temperatureText: TextView = root.findViewById(R.id.text_temperature)
+        liveCellarViewModel.temperatureText.observe(viewLifecycleOwner, Observer {
+            temperatureText.text = it
+        })
+        val humidityText: TextView = root.findViewById(R.id.text_humidity)
+        liveCellarViewModel.humidityText.observe(viewLifecycleOwner, Observer {
+            humidityText.text = it
+        })
+        val airPressureText: TextView = root.findViewById(R.id.text_airpressure)
+        liveCellarViewModel.airPressureText.observe(viewLifecycleOwner, Observer {
+            airPressureText.text = it
+        })
+        val gasText: TextView = root.findViewById(R.id.text_gas)
+        liveCellarViewModel.gasText.observe(viewLifecycleOwner, Observer {
+            gasText.text = it
         })
         return root
     }

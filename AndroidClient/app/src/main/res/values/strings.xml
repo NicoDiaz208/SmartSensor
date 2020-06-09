@@ -25,5 +25,8 @@
     <string name="airpressure">Airpressure:</string>
     <string name="charts_livingroom">Charts Livingroom</string>
     <string name="gas">Gas:</string>
+    <string name="charts_garage">charts_garage</string>
+    <string name="charts_kitchen">charts_kitchen</string>
+    <string name="light">Light</string>
 
 </resources>

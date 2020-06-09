@@ -26,7 +26,7 @@ exports.sendDataToRest = function(req,res) {
 		console.log('a');
 		data.find(query).sort(compare).toArray((err, result) => {
 			if(last != undefined)
-				res.send(result.slice(0,+last));
+				res.send(result.slice(Math.max(result.length - last, 0)));
 			else
 				res.send(result);
 			if (err) throw err;

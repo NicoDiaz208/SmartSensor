@@ -53,6 +53,11 @@ class LiveKitchenViewModel : ViewModel() {
             "1",
             _airPressureText
         )
+        Repo.getDataByTopic(
+            "Htl-Leonding2020NVS/SmartHome/Kitchen/Gas",
+            "1",
+            _gasText
+        )
 
         /*GlobalScope.launch {
             Log.d(LiveGarageViewModel.LOG_TAG, "Load...")
