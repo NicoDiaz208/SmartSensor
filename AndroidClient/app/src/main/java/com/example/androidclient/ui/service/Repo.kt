@@ -15,7 +15,7 @@ object Repo {
     var kitchenTemperature :List<Data> = listOf(Data("1",1.0,"",""));
     lateinit var kitchenHumidity :List<Data>;
     lateinit var kitchenAirpressure :List<Data>;
-    public var amount = "100"
+    public var amount = "100000"
     suspend fun getAllData(): List<Data> = coroutineScope {
         val data = GlobalScope.async {
             Log.d(LiveGarageViewModel.LOG_TAG, "Load...")

@@ -47,9 +47,8 @@ class ChartsLivingroomFragment : Fragment() {
             textView.text = it
         })*/
         lineChart = root.findViewById(R.id.linechart)
-        lineChart.setNoDataText("")
+        lineChart.setNoDataText("Loading Data...")
         GlobalScope.launch {
-
             val upperLimitLine = LimitLine(0f)
             upperLimitLine.lineWidth = 1f
             upperLimitLine.labelPosition = LimitLine.LimitLabelPosition.RIGHT_TOP
@@ -273,7 +272,6 @@ class ChartsLivingroomFragment : Fragment() {
             val data = LineData(dataSets)
 
             lineChart.data = data;
-
             Log.i("test","t");
             val xAxis = lineChart.xAxis
             val formatter = AxisValueFormatter()
@@ -281,6 +279,7 @@ class ChartsLivingroomFragment : Fragment() {
             xAxis.valueFormatter = formatter
             leftAxis.axisMaximum = maxY
             leftAxis.axisMinimum = minY
+            lineChart.invalidate();
         }
         return root
     }

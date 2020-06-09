@@ -32,7 +32,7 @@ class ChartsKitchenFragment : Fragment() {
 
     private lateinit var lineChart: LineChart
 
-    private val sdf = SimpleDateFormat("dd/mm")
+    private val sdf = SimpleDateFormat("dd/MM")
     private var maxY = 0f
     private var minY = 100f
     override fun onCreateView(
@@ -48,7 +48,7 @@ class ChartsKitchenFragment : Fragment() {
             textView.text = it
         })*/
         lineChart = root.findViewById(R.id.linechart)
-        lineChart.setNoDataText("")
+        lineChart.setNoDataText("Loading Data...")
         GlobalScope.launch {
 
             val upperLimitLine = LimitLine(0f)
@@ -221,6 +221,8 @@ class ChartsKitchenFragment : Fragment() {
         yValueAirpressure.add(Entry(8f,1f))
         yValueAirpressure.add(Entry(9f,0f))*/
             // val values = arrayListOf<String>()
+            val values = arrayListOf<String>()
+            var lastValueY = ""
             deferredObject =
                 SmartHomeApi.retrofitService.getByTopic(
                     "Htl-Leonding2020NVS/SmartHome/Kitchen/AirPressure",
@@ -239,6 +241,13 @@ class ChartsKitchenFragment : Fragment() {
                     Log.i("Seconds", "" + date.seconds)
                     yValueAirpressure.add(Entry(count.toFloat(), x.message.toFloat()))
                     // values.add(""+count)
+                    if(lastValueY == sdf.format(date)){
+                        values.add("${date.hours}:${date.minutes}:${date.seconds}")
+                    }
+                    else{
+                        lastValueY = sdf.format(date)
+                        values.add(""+sdf.format(date))
+                    }
                     count++;
                     if(x.message.toFloat() > maxY){
                         maxY = x.message.toFloat() + 40
@@ -266,14 +275,13 @@ class ChartsKitchenFragment : Fragment() {
 
             lineChart.data = data;
 
-            val values = arrayOf<String>("Mon", "Tue", "Wen", "Thu", "Fri", "Sat", "Sun")
-
             val xAxis = lineChart.xAxis
             val formatter = AxisValueFormatter()
-            formatter.values = values // .toArray() as Array<String>
+            formatter.values = values.toTypedArray()
             xAxis.valueFormatter = formatter
             leftAxis.axisMaximum = maxY
             leftAxis.axisMinimum = minY
+            lineChart.invalidate();
         }
         return root
     }

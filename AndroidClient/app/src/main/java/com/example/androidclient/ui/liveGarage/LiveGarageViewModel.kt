@@ -22,20 +22,20 @@ class LiveGarageViewModel : ViewModel() {
     val text: LiveData<String> = _text
 
     private val _temperatureText = MutableLiveData<String>().apply {
-        value = "43"
+        value = "0"
     }
     val temperatureText: LiveData<String> = _temperatureText
 
     private val _gasText = MutableLiveData<String>().apply {
-        value = "Gas"
+        value = "0"
     }
     val gasText: LiveData<String> = _gasText
     private val _humidityText = MutableLiveData<String>().apply {
-        value = "33"
+        value = "0"
     }
     val humidityText: LiveData<String> = _humidityText
     private val _airPressureText = MutableLiveData<String>().apply {
-        value = "33"
+        value = "0"
     }
     val airPressureText: LiveData<String> = _airPressureText
     init {

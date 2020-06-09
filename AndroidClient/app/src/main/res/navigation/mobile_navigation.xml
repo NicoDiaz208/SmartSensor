@@ -45,7 +45,7 @@
     <fragment
         android:id="@+id/nav_charts_cellar"
         android:name="com.example.androidclient.ui.chartsCellar.ChartsCellarFragment"
-        android:label="charts_cellar"
+        android:label="@string/charts_cellar"
         tools:layout="@layout/fragment_charts_cellar" />
     <fragment
         android:id="@+id/nav_charts_garage"
